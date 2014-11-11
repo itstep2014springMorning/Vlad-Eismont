@@ -1,0 +1,69 @@
+=========================main=========================
+#include "my.h"
+#include "circle.h"
+#include <string.h>
+#include <stdio.h>
+#include "symbol.h"
+int main(){
+	char buffer[size][size + 2];
+	my(1);
+	for (int i = 0; i < size; i++){
+		strcpy_s(buffer[i], "                                                            ");
+	}
+	circle(28, 28, 27, buffer);
+	symbol(15, 18, 6, buffer);
+	for (int i = 0; i < size; i++){
+		printf("%s\n", buffer[i]);
+	}
+	return 0;
+}
+=========================cicle.h=========================
+#ifndef CIRCLE_H
+#define CIRCLE_H
+const int size = 60;
+void circle(double i,double j,int r,char buffer[size][size+2]);
+#endif
+=========================circle.cpp=========================
+#include "circle.h"
+#include <cstdio>
+#include <math.h>
+void circle(double i0, double j0, int r, char buffer[size][size + 2]){
+	double alpha;
+	for (alpha = 0; alpha < 6.29; alpha += 0.01){
+		int i = round(r*sin(alpha)) + i0;
+		int j = round(r*cos(alpha)) + j0;
+		if ((i>0) && (i < size) && (j >= 0) && (j < size)) {
+			buffer[i][j] = '*';
+		}
+	}
+	return;
+}
+=========================symbol.h=========================
+#ifndef SYMBOL_H
+#define SYMBOL_H
+#include "circle.h"
+void  symbol(double i, double j, int r, char buffer[size][size + 2]);
+#endif
+=========================symbol.cpp=========================
+#include "symbol.h"
+#include <math.h>
+#include "circle.h"
+void  symbol(double i, double j, int r, char buffer[size][size + 2]){
+	circle(i+8, j, r, buffer);
+	circle(i+8, j+10, r, buffer);
+	circle(i+8, j+20, r, buffer);
+	circle(i+15, j+5, r, buffer);
+	circle(i+15, j + 15, r, buffer);
+}
+=========================my.h=========================
+#ifndef MY_H
+#define MY_H
+int my(int x);
+#endif
+=========================my.cpp=========================
+#include "my.h"
+#include <cstdio>
+int my(int x){
+	printf("%d\n", x);
+	return 0;
+}
