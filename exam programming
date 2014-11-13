@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+void main()
+{
+	char Input[200];
+	printf("Enter a sentence: ");
+	gets(Input);
+	for (int i = 0; i < strlen(Input); i++){
+		if (Input[i] != ' ')Input[i] = '*';
+		printf("%c", Input[i]);
+	}
+	//////////////////////////////////////////////////
+	printf("\nEnter a sentence: ");
+	gets(Input);
+	for (int i = 0; i < strlen(Input); i++){
+		if ((int(Input[i])>= 65) && (int(Input[i]) <= 90)){
+			int c = Input[i]-65;
+			printf("%c", 90-c);
+			//printf("%c", char(k+c));
+		}
+		if ((int(Input[i]) >= 97) && (int(Input[i]) <= 122)){
+			int c = Input[i] - 97;
+			printf("%c", 122 - c);
+		}
+	}
+	printf("\n");
+	return;
+}/*Эйсмонт Владислав Антоньевич
+1. Пользователь вводит фразу. Заменить все буквы в ней на звёздочки.
+2. Пользователь вводит фразу. Заменить все буквы в ней на противоположные в алфавите, то есть A на Z и наоборот, B на Y и наоборот, C на X и наоборот, и так далее.
+*/
